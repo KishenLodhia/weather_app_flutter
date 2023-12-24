@@ -31,7 +31,6 @@ class Forcast extends StatelessWidget {
                   ),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                padding: const EdgeInsets.all(5),
                 height: 40,
                 width: 60,
                 child: Center(
