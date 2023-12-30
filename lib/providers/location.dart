@@ -1,42 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
-import 'package:weather_app/home_screen.dart';
-import 'package:weather_app/providers/weather_provider.dart';
 
-Future<void> main() async {
-  await dotenv.load(fileName: ".env");
-  Position position = await _determinePosition();
-  runApp(
-    MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-          create: (_) => WeatherProvider(
-              '${position.latitude},${position.longitude}', true),
-          lazy: false,
-        ),
-      ],
-      child: const MainApp(),
-    ),
-  );
-}
-
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        textTheme: GoogleFonts.latoTextTheme(Typography.whiteHelsinki),
-      ),
-      home: const HomeScreen(),
-    );
-  }
-}
-
+/// Determine the current position of the device.
+///
+/// When the location services are not enabled or permissions
+/// are denied the `Future` will return an error.
 Future<Position> _determinePosition() async {
   bool serviceEnabled;
   LocationPermission permission;

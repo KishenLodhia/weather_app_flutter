@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 
 class WeatherProvider extends ChangeNotifier {
   final String _apiKey = dotenv.get('WEATHER_API_KEY');
-  String location = 'brisbane';
+  String location = 'Brisbane';
   String aqi = 'yes';
 
   WeatherProvider(this.location, bool aqi) {
